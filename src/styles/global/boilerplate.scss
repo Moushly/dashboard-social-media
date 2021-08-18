@@ -1,0 +1,32 @@
+@use 'variables' as *;
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: pink;
+  line-height: 1.6;
+}
+
+// images
+img {
+  width: 100%; // image to be contained in it's coontainer
+}
+
+code,
+pre {
+  background-color: #333;
+  color: #fff;
+  padding: 0.2rem 0.624rem;
+}

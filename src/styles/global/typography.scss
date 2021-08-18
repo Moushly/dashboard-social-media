@@ -1,0 +1,25 @@
+@use 'variables' as *;
+
+// hedding top margin 0
+h1,
+h2,
+h3 {
+  font-weight: 300;
+  margin-top: 0;
+  line-height: 1.15;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+//paragraph
+p {
+  margin: 0.625rem 0;
+}
