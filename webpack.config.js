@@ -15,36 +15,18 @@ const plugins = [
   }),
 ];
 
-// if (process.env.NODE_ENV === 'production') {
-//   mode = 'production';
-//   // Temporary workaround for 'browserslist' bug that is being patched in the near future
-//   target = 'browserslist';
-// }
-
-/* 
-  if (process.env.SERVE) {
-    // We only want React Hot Reloading in serve mode
-    plugins.push(new ReactRefreshWebpackPlugin());
-  }
-  */
-
 module.exports = {
-  // mode defaults to 'production' if not set
   mode: mode,
+
   entry: {
     main: path.resolve(__dirname, 'src/js/app.js'),
   },
-  // This is unnecessary in Webpack 5, because it's the default.
-  // However, react-refresh-webpack-plugin can't find the entry without it.
-  //   entry: './src/index.js',
 
   output: {
-    // output path is required for `clean-webpack-plugin`
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
+    assetModuleFilename: 'images/[name][hash][ext][query]',
     clean: true,
-    // this places all images processed in an image folder
-    // assetModuleFilename: 'images/[hash][ext][query]',
   },
 
   devtool: 'source-map',
@@ -61,30 +43,19 @@ module.exports = {
     rules: [
       {
         test: /\.(s[ac]|c)ss$/i,
-        use: [
-          //   {
-          //     loader: MiniCssExtractPlugin.loader,
-          //     // This is required for asset imports in CSS, such as url()
-          //     options: { publicPath: '' },
-          //   },
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        type: 'asset',
+        type: 'asset/resource',
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          // without additional settings, this will reference .babelrc
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-
             cacheDirectory: true,
           },
         },
