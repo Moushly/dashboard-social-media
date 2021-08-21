@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use '../utiles' as *;
 
 html {
   font-size: 100%;
@@ -15,13 +16,17 @@ html {
 
 body {
   font-family: var(--font-inter);
-  background-color: green;
-  line-height: 1.6;
+  line-height: 1.1;
+  background: var(--dark-bg);
+  color: var(--dark-text2);
+
+  @include respond-below(md) {
+  }
 }
 
 // images
 img {
-  width: 100%; // image to be contained in it's coontainer
+  // width: 100%; // image to be contained in it's coontainer
 }
 
 code,

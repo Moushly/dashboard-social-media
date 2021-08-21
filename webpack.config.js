@@ -1,13 +1,12 @@
 const path = require('path');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let mode = 'development'; // Or production
+
 // let target = 'web';
 const plugins = [
-  //   new CleanWebpackPlugin(),
-  //   new MiniCssExtractPlugin(),
   new HtmlWebpackPlugin({
     title: 'Dashboard',
     template: 'src/index.html',
@@ -15,7 +14,7 @@ const plugins = [
   }),
 ];
 
-module.exports = {
+let config = {
   mode: mode,
 
   entry: {
@@ -25,22 +24,15 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
-    assetModuleFilename: 'images/[name][hash][ext][query]',
-    clean: true,
-  },
-
-  devtool: 'source-map',
-
-  // required if using webpack-dev-server
-  devServer: {
-    port: 5001,
-    contentBase: './dist',
-    hot: true,
-    watchContentBase: true,
+    assetModuleFilename: 'assets/[name][hash][ext][query]',
   },
 
   module: {
     rules: [
+      {
+        test: /\.html$/,
+        use: 'html-loader',
+      },
       {
         test: /\.(s[ac]|c)ss$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
@@ -48,6 +40,9 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
+        // generator: {
+        //   filename: 'images/[name][hash][ext][query]',
+        // },
       },
       {
         test: /\.jsx?$/,
@@ -56,12 +51,32 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            cacheDirectory: true,
           },
         },
       },
     ],
   },
-
   plugins: plugins,
+
+  devtool: 'source-map',
+
+  // required if using webpack-dev-server
+  devServer: {
+    port: 5001,
+    contentBase: './dist',
+    hot: true,
+  },
+
+  stats: {
+    children: true,
+  },
 };
+
+if (process.env.NODE_ENV === 'production') {
+  mode = 'production';
+  config.plugins.push(new CleanWebpackPlugin());
+  config.module.rules[1].use[0] = MiniCssExtractPlugin.loader;
+  config.plugins.push(new MiniCssExtractPlugin());
+}
+
+module.exports = config;

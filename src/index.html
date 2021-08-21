@@ -4,9 +4,226 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>Social Media Dashboard</title>
   </head>
   <body>
-    <h1><%= htmlWebpackPlugin.options.title %></h1>
+    <header class="header container">
+      <div class="header__title">
+        <h1>Social Media Dashboard</h1>
+        <span class="header__subtitle">Total Followers: 23,004</span>
+      </div>
+      <fieldset
+        class="header__toggle toggle"
+        aria-label="theme toggle"
+        role="radiogroup"
+      >
+        <div class="toggle__wrapper">
+          <input type="radio" name="theme" id="dark" />
+          <input type="radio" name="theme" id="system" />
+          <input type="radio" name="theme" id="light" />
+          <span aria-hidden="true" class="toggle__background"></span>
+          <span aria-hidden="true" class="toggle__button"></span>
+        </div>
+        <label for="dark">dark</label>
+        <label for="system">system</label>
+        <label for="light">light</label>
+      </fieldset>
+    </header>
+    <main>
+      <section class="container cards">
+        <div class="card card-facebook">
+          <div class="card__platform">
+            <img
+              class="card__icon"
+              src="./img/icon-facebook.svg"
+              alt="facebook"
+            />
+            <div class="card__username">@moushly</div>
+          </div>
+          <div class="card__followers">
+            <div class="card__count card__count--big">1987</div>
+            <div class="card__label">Followers</div>
+          </div>
+          <div class="card__change card__change--up">
+            <img src="./img/icon-up.svg" alt="up" />
+            <div>12 Today</div>
+          </div>
+        </div>
+
+        <div class="card card-twitter">
+          <div class="card__platform">
+            <img
+              class="card__icon"
+              src="./img/icon-twitter.svg"
+              alt="facebook"
+            />
+            <div class="card__username">@nathan</div>
+          </div>
+          <div class="card__followers">
+            <div class="card__count card__count--big">1044</div>
+            <div class="card__label">Followers</div>
+          </div>
+          <div class="card__change card__change--up">
+            <img src="./img/icon-up.svg" alt="up" />
+            <div>99 Today</div>
+          </div>
+        </div>
+
+        <div class="card card-instagram">
+          <div class="card__platform">
+            <img
+              class="card__icon"
+              src="./img/icon-instagram.svg"
+              alt="facebook"
+            />
+            <div class="card__username">@nathan</div>
+          </div>
+          <div class="card__followers">
+            <div class="card__count card__count--big">11K</div>
+            <div class="card__label">Followers</div>
+          </div>
+          <div class="card__change card__change--up">
+            <img src="./img/icon-up.svg" alt="up" />
+            <div>1099 Today</div>
+          </div>
+        </div>
+
+        <div class="card card-youtube">
+          <div class="card__platform">
+            <img
+              class="card__icon"
+              src="./img/icon-youtube.svg"
+              alt="facebook"
+            />
+            <div class="card__username">@nathan</div>
+          </div>
+          <div class="card__followers">
+            <div class="card__count card__count--big">8239</div>
+            <div class="card__label">Followers</div>
+          </div>
+          <div class="card__change card__change--down">
+            <img src="./img/icon-down.svg" alt="down" />
+            <div>144 Today</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <h2>Overview - Today</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="card__small">
+              <div class="card__title">Page views</div>
+              <div class="card__icon card__icon--small">
+                <img src="./img/icon-facebook.svg" alt="facebook" />
+              </div>
+              <div class="card__count card__count--small">87</div>
+              <div class="card__change card__change--small card__change--up">
+                <img src="./img/icon-up.svg" alt="up" />
+                <div>3%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__small">
+              <div class="card__title">Likes</div>
+              <div class="card__icon card__icon--small">
+                <img src="./img/icon-facebook.svg" alt="facebook" />
+              </div>
+              <div class="card__count card__count--small">52</div>
+              <div class="card__change card__change--small card__change--down">
+                <img src="./img/icon-down.svg" alt="down" />
+                <div>2%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__small">
+              <div class="card__title">Likes</div>
+              <div class="card__icon card__icon--small">
+                <img src="./img/icon-instagram.svg" alt="instagram" />
+              </div>
+              <div class="card__count card__count--small">5462</div>
+              <div class="card__change card__change--small card__change--up">
+                <img src="./img/icon-up.svg" alt="up" />
+                <div>2257%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__small">
+              <div class="card__title">Profiel Views</div>
+              <div class="card__icon card__icon--small">
+                <img src="./img/icon-instagram.svg" alt="instagram" />
+              </div>
+              <div class="card__count card__count--small">52K</div>
+              <div class="card__change card__change--small card__change--up">
+                <img src="./img/icon-up.svg" alt="up" />
+                <div>1375%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__small">
+              <div class="card__title">Retweets</div>
+              <div class="card__icon card__icon--small">
+                <img src="./img/icon-twitter.svg" alt="twitter" />
+              </div>
+              <div class="card__count card__count--small">117</div>
+              <div class="card__change card__change--small card__change--up">
+                <img src="./img/icon-up.svg" alt="up" />
+                <div>303%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__small">
+              <div class="card__title">Likes</div>
+              <div class="card__icon card__icon--small">
+                <img src="./img/icon-twitter.svg" alt="twitter" />
+              </div>
+              <div class="card__count card__count--small">507</div>
+              <div class="card__change card__change--small card__change--up">
+                <img src="./img/icon-up.svg" alt="up" />
+                <div>553%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__small">
+              <div class="card__title">Likes</div>
+              <div class="card__icon card__icon--small">
+                <img src="./img/icon-youtube.svg" alt="youtube" />
+              </div>
+              <div class="card__count card__count--small">107</div>
+              <div class="card__change card__change--small card__change--down">
+                <img src="./img/icon-down.svg" alt="down" />
+                <div>19%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__small">
+              <div class="card__title">Total Views</div>
+              <div class="card__icon card__icon--small">
+                <img src="./img/icon-youtube.svg" alt="facebook" />
+              </div>
+              <div class="card__count card__count--small">1407</div>
+              <div class="card__change card__change--small card__change--down">
+                <img src="./img/icon-down.svg" alt="down" />
+                <div>12%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
